@@ -1,4 +1,6 @@
 package houserental;
+
+
 import java.io.Serializable;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,6 +9,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
+
+
 public class User implements Serializable{
     protected String firstName;
     protected String lastName;
@@ -17,6 +21,8 @@ public class User implements Serializable{
     protected UserType type;
     protected String userID;
     static protected int userCounter;
+    
+    
     User(String firstName, String lastName, String email, String phone, String userName, String password, UserType type){
         this.firstName = firstName;
         this.lastName = lastName;
@@ -24,7 +30,9 @@ public class User implements Serializable{
         this.phone = phone;
         this.userName = userName;
         this.password = password;
-        this.type = type;}
+        this.type = type;
+    }
+    
     public static String generateUserId(String FirstName, String LastName, int age, String phone, String email, Enum type) {
         // Extract initials from the first and last name
         char firstInitial = FirstName.isEmpty() ? '?' : FirstName.charAt(0);
@@ -41,13 +49,14 @@ public class User implements Serializable{
 
         return userId;
     } 
+    
     public boolean login(String userName,String Password){
         try{
         FileInputStream i = new FileInputStream("Users.txt");
         ObjectInputStream in = new ObjectInputStream(i);
         while(in.readLine() != userName){
         }
-        if(in.readLine() == password){
+        if(in.readLine() == password){ ///Comparing strings using == instead of str.equal()
             return true;
         }
         else{
@@ -57,10 +66,12 @@ public class User implements Serializable{
             System.out.println(e);
         
     }
+         return false;
+    }
     public void signUp(String NewUserName, String NewPassword, String NewEmail, int NewAge, String NewFirstName, String NewLastName,UserType type,String userID, String newPhone, String newemail){
         switch(type.ordinal()){
             case 0:
-                Admin x = new Admin(NewUserName, NewPassword, NewEmail, NewAge, NewFirstName,NewLastName, userID, newphone, newemail);
+                Admin x = new Admin(NewUserName, NewPassword, NewEmail, NewAge, NewFirstName,NewLastName, userID, newphone, newemail); /// what is newphone?? ///
                 try{
                     FileOutputStream f = new FileOutputStream(new File("Users.txt"));
 	            ObjectOutputStream o = new ObjectOutputStream(f);
@@ -74,7 +85,7 @@ public class User implements Serializable{
                 }
         
             case 1:
-                Receptionist y = new Receptionist(NewUserName, NewPassword, NewEmail, NewAge, NewFirstName,NewLastName, userID,newphone, newemail);
+                Receptionist y = new Receptionist(NewUserName, NewPassword, NewEmail, NewAge, NewFirstName,NewLastName, userID,newphone, newemail);///same as previous cases 
                 try{
                     FileOutputStream f = new FileOutputStream(new File("Users.txt"));
 	            ObjectOutputStream o = new ObjectOutputStream(f);
@@ -88,7 +99,7 @@ public class User implements Serializable{
                 }
         
             case 2: 
-                Renter z = new Renter(NewUserName, NewPassword, NewEmail, NewAge, NewFirstName,NewLastName, userID,newphone, newemail);
+                Renter z = new Renter(NewUserName, NewPassword, NewEmail, NewAge, NewFirstName,NewLastName, userID,newphone, newemail);//same as above
                 try{
                     FileOutputStream f = new FileOutputStream(new File("Users.txt"));
 	            ObjectOutputStream o = new ObjectOutputStream(f);
