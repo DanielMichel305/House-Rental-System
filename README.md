@@ -7,7 +7,7 @@ The system also has an admin panel that would be responsible for managing accoun
 ## Authors
 
 - [@DanielMichel305](https://github.com/DanielMichel305)
-- [@patrickbatmaan](https://github.com/PatrickBatmaan)
+- [@MalakMohameed](https://github.com/MalakMohameed)
 - [@nourisded](https://github.com/nourisded)
 - [@Yahia-Elshobokshy](https://github.com/Yahia-Elshobokshy)
 - [@BassemMoussa](https://github.com/BassemMoussa)
